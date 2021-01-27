@@ -1,5 +1,7 @@
 package br.com.zup.casadocodigo.autores;
 
+import br.com.zup.casadocodigo.validators.ValorUnico;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -11,6 +13,7 @@ public class AutorForm {
     private String nome;
     @NotBlank
     @Email
+    @ValorUnico(domainClass = Autor.class, fieldName = "email")
     private String email;
     @NotBlank
     @Size(max = 400)

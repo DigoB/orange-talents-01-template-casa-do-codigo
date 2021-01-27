@@ -1,6 +1,7 @@
 package br.com.zup.casadocodigo.categorias;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,23 +13,16 @@ import javax.validation.Valid;
 public class CategoriaController {
 
     @Autowired
-    CategoriaRepository categoriaRepository;
-    @Autowired
-    CategoriaDuplicadaValidator categoriaDuplicadaValidator;
-
-    @InitBinder
-    public void init(WebDataBinder binder) {
-        binder.addValidators(categoriaDuplicadaValidator);
-    }
+    private CategoriaRepository categoriaRepository;
 
     @PostMapping
-    public String cadastraCategoria(@RequestBody @Valid NovaCategoriaDto novaCategoria) {
+    public ResponseEntity<DetalhesDeNovaCategoria> cadastraCategoria(@RequestBody @Valid CategoriaForm form) {
 
-        Categoria cat = new Categoria(novaCategoria.getNome());
-        System.out.println(novaCategoria);
+        Categoria novaCategoria = form.paraCategoria();
 
-        categoriaRepository.save(cat);
-        return cat.toString();
+        categoriaRepository.save(novaCategoria);
+
+        return ResponseEntity.ok().body(new DetalhesDeNovaCategoria(novaCategoria));
 
     }
 }
