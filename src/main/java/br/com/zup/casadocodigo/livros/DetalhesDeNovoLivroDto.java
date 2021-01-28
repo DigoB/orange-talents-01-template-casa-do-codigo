@@ -1,12 +1,12 @@
 package br.com.zup.casadocodigo.livros;
 
-import br.com.zup.casadocodigo.autores.Autor;
-import br.com.zup.casadocodigo.autores.DetalhesDeNovoAutor;
-import br.com.zup.casadocodigo.categorias.Categoria;
-import br.com.zup.casadocodigo.categorias.DetalhesDeNovaCategoria;
 
+import br.com.zup.casadocodigo.autores.DetalhesDeNovoAutor;
+import br.com.zup.casadocodigo.categorias.DetalhesDeNovaCategoria;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DetalhesDeNovoLivroDto {
 
@@ -31,6 +31,7 @@ public class DetalhesDeNovoLivroDto {
         this.categoria = livro.getCategoria();
         this.autor = new DetalhesDeNovoAutor(livro.getAutor());
     }
+
 
     public Long getId() {
         return id;
@@ -67,4 +68,9 @@ public class DetalhesDeNovoLivroDto {
     public DetalhesDeNovoAutor getAutor() {
         return autor;
     }
+
+    public static List<DetalhesDeNovoLivroDto> converter(List<Livro> livros) {
+        return livros.stream().map(DetalhesDeNovoLivroDto::new).collect(Collectors.toList());
+    }
+
 }

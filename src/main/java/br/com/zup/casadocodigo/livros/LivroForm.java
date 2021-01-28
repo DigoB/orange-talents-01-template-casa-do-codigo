@@ -9,12 +9,14 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.com.zup.casadocodigo.validators.ValorUnico;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 public class LivroForm {
 
     @NotNull
+    @ValorUnico(domainClass = Livro.class, fieldName = "titulo")
     private String titulo;
     @NotNull
     @Size(max = 500)
@@ -27,6 +29,7 @@ public class LivroForm {
     @Min(100)
     private Integer numPaginas;
     @NotNull
+    @ValorUnico(domainClass = Livro.class, fieldName = "isbn")
     private String isbn;
     @NotNull
     @JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
