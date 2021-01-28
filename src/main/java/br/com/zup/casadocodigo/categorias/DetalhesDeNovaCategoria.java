@@ -8,6 +8,9 @@ public class DetalhesDeNovaCategoria {
         this.nome = categoria.getNome();
     }
 
+    public DetalhesDeNovaCategoria() {
+    }
+
     public String getNome() {
         return nome;
     }
