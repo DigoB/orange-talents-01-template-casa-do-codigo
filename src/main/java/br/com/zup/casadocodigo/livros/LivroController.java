@@ -25,11 +25,12 @@ public class LivroController {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    @GetMapping
+    @GetMapping("/livros")
     public List<DetalhesDeNovoLivroDto> lista() {
         List<Livro> livros = livroRepository.findAll();
         return DetalhesDeNovoLivroDto.converter(livros);
     }
+
 
     @PostMapping
     public ResponseEntity<DetalhesDeNovoLivroDto> cadastraLivro(@RequestBody @Valid LivroForm form, UriComponentsBuilder uriBuilder) {

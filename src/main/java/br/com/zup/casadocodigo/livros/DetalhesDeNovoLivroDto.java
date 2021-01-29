@@ -5,6 +5,7 @@ import br.com.zup.casadocodigo.autores.DetalhesDeNovoAutor;
 import br.com.zup.casadocodigo.categorias.DetalhesDeNovaCategoria;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,8 @@ public class DetalhesDeNovoLivroDto {
     private String sumario;
     private BigDecimal preco;
     private Integer numPaginas;
-    private LocalDate dataPublicacao;
+    private String dataPublicacao;
+    private String isbn;
     private DetalhesDeNovaCategoria categoria;
     private DetalhesDeNovoAutor autor;
 
@@ -27,7 +29,8 @@ public class DetalhesDeNovoLivroDto {
         this.sumario = livro.getSumario();
         this.preco = livro.getPreco();
         this.numPaginas = livro.getNumPaginas();
-        this.dataPublicacao = livro.getDataPublicacao();
+        this.dataPublicacao = livro.getDataPublicacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.isbn = livro.getIsbn();
         this.categoria = livro.getCategoria();
         this.autor = new DetalhesDeNovoAutor(livro.getAutor());
     }
@@ -57,8 +60,12 @@ public class DetalhesDeNovoLivroDto {
         return numPaginas;
     }
 
-    public LocalDate getDataPublicacao() {
+    public String getDataPublicacao() {
         return dataPublicacao;
+    }
+
+    public String getIsbn() {
+        return isbn;
     }
 
     public DetalhesDeNovaCategoria getCategoria() {
