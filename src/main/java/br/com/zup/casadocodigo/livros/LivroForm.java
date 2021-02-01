@@ -76,8 +76,4 @@ public class LivroForm {
         return autor;
     }
 
-    //Setter criado pois o jackson não consegue desserializar o formato em json, no momento não conheço outra alternativa
-    public void setDataPublicacao(LocalDate dataPublicacao) {
-        this.dataPublicacao = dataPublicacao;
-    }
 }
