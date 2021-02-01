@@ -21,10 +21,10 @@ public class EstadoController {
     @Autowired
     private PaisRepository paisRepository;
 
-    @InitBinder
+   /* @InitBinder
     public void init(WebDataBinder binder) {
         binder.addValidators(estadoDuplicadoValidator);
-    }
+    }*/
 
     @PostMapping
     public ResponseEntity<Estado> novoEstado(@RequestBody @Valid EstadoForm form) {

@@ -23,4 +23,12 @@ public class EstadoForm {
     public String getNomePais() {
         return nomePais;
     }
+
+    public void setNomePais(String nomePais) {
+        this.nomePais = nomePais;
+    }
+
+    public void setNomeEstado(String nomeEstado) {
+        this.nomeEstado = nomeEstado;
+    }
 }

@@ -17,4 +17,7 @@ public class PaisForm {
         return nomePais;
     }
 
+    public void setNomePais(String nomePais) {
+        this.nomePais = nomePais;
+    }
 }

@@ -54,6 +54,8 @@ public class Compras {
     @NotBlank
     private String cep;
 
+    public Compras() {}
+
     public Compras(Long id, @NotBlank String nome, @NotBlank String sobrenome, @NotBlank @Email String email,
                    @CPF @NotBlank String cpf, @CNPJ @NotBlank String cnpj, @NotBlank String endereco,
                    @NotBlank String complemento, @NotBlank String cidade, @NotBlank String estado,

@@ -12,7 +12,7 @@ public class Estado {
     private Long id;
     @NotBlank
     private String nome;
-    @NotBlank
+
     @ManyToOne
     private Pais pais;
 
